@@ -8,12 +8,12 @@ gem 'i18n'
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
-  gem "rspec", "~> 2.10.0"
+  gem "rspec"
+  gem "rspec-its"
   gem "yard"
-  gem "bundler", "~> 1.1.3"
-  gem "jeweler", "~> 1.8.3"
-  # gem "rcov", ">= 0"
-  gem "simplecov", "~> 0.6.4"
+  gem "bundler", ">= 1.15.0"
+  gem "jeweler"
+  gem "simplecov"
   gem "autotest"
 
   gem 'rdiscount'

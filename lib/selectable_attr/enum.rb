@@ -31,6 +31,7 @@ module SelectableAttr
     end
 
     def ==(other)
+      return false if other.nil?
       return false unless length == other.length
       other_entries = other.entries
       # ruby-1.8系ではEnumeratir#with_indexが使えないので1.8でも使用可能な書き方に変更しました。
@@ -42,6 +43,7 @@ module SelectableAttr
     end
 
     def ===(other)
+      return false if other.nil?
       return false unless length == other.length
       other_entries = other.entries
       # ruby-1.8系ではEnumeratir#with_indexが使えないので1.8でも使用可能な書き方に変更しました。

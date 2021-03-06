@@ -123,7 +123,7 @@ describe SelectableAttr do
         attr.to_s.gsub(/(.*)_code(.*)$/){"#{$1}#{$2}"}
       end
 
-      enum :enum_code1 do
+      base_enum :enum_code1 do
         entry 1, :entry1, "エントリ1"
         entry 2, :entry2, "エントリ2"
         entry 3, :entry3, "エントリ3"
@@ -357,14 +357,14 @@ describe SelectableAttr do
     it "should return false if column does exist" do
       ConnectableMock1.should_receive(:connected?).and_return(true)
       ConnectableMock1.should_receive(:table_exists?).and_return(true)
-      ConnectableMock1.should_receive(:columns).and_return([mock(:column1, :name => :column1)])
+      ConnectableMock1.should_receive(:columns).and_return([double(:column1, :name => :column1)])
       ConnectableMock1.has_attr(:column1).should == true
     end
 
     it "should return false if column doesn't exist" do
       ConnectableMock1.should_receive(:connected?).and_return(true)
       ConnectableMock1.should_receive(:table_exists?).and_return(true)
-      ConnectableMock1.should_receive(:columns).and_return([mock(:column1, :name => :column1)])
+      ConnectableMock1.should_receive(:columns).and_return([double(:column1, :name => :column1)])
       ConnectableMock1.has_attr(:unknown_column).should == false
     end
 

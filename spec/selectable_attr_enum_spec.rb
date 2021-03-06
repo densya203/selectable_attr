@@ -132,7 +132,7 @@ describe SelectableAttr::Enum do
     end
 
     it "valid" do
-      InetAccess[1].inspect.should =~ /\#<SelectableAttr::Enum::Entry:[\.0-9a-f]+\ @id=1,\ @key=:email,\ @name="Eメール",\ @options=\{:protocol=>"mailto:"\}>/
+      InetAccess[1].inspect.should =~ /<SelectableAttr::Enum::Entry:2670 @id=1, @key=:email, @name=\"E\\u30E1\\u30FC\\u30EB\", @options={:protocol=>\"mailto:\"}>/
     end
   end
 

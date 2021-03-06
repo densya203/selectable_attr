@@ -72,15 +72,15 @@ module SelectableAttr
         multi_selectable_attrs.include?(attr.to_s) ? :multi : nil
       end
 
-      def enum(*args, &block)
+      def base_enum(*args, &block)
         process_definition(block, *args) do |enum, context|
           self.single_selectable_attrs << context[:attr].to_s
           define_enum_class_methods(context)
           define_enum_instance_methods(context)
         end
       end
-      alias_method :single_selectable_attr, :enum
-      alias_method :selectable_attr, :enum
+      alias_method :single_selectable_attr, :base_enum
+      alias_method :selectable_attr, :base_enum
 
 
       def enum_array(*args, &block)
@@ -155,7 +155,7 @@ module SelectableAttr
       alias_method :enum_name_pattern=, :selectable_attr_name_pattern=
 
       def create_enum(&block)
-        result = Enum.new
+        result = ::SelectableAttr::Enum.new
         result.instance_eval(&block)
         result
       end

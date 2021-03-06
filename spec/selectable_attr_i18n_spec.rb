@@ -3,6 +3,8 @@ require File.expand_path('spec_helper', File.dirname(__FILE__))
 
 require 'i18n'
 
+I18n.config.available_locales = [:ja, :en]
+
 describe SelectableAttr::Enum do
 
   before(:all) do
@@ -37,7 +39,6 @@ describe SelectableAttr::Enum do
   end
 
   it 'test_enum1_i18n' do
-    I18n.locale = nil
     I18n.locale.should == :en
     EnumI18n1.name_by_key(:entry1).should == "entry one"
     EnumI18n1.name_by_key(:entry2).should == "entry two"
@@ -103,14 +104,6 @@ describe SelectableAttr::Enum do
   end
 
   it 'test_enum1_i18n' do
-    I18n.default_locale = 'ja'
-    I18n.locale = nil
-    I18n.locale.should == :ja
-    SelectableAttrMock2.enum1_name_by_key(:entry1).should == "エントリ壱"
-    SelectableAttrMock2.enum1_name_by_key(:entry2).should == "エントリ弐"
-    SelectableAttrMock2.enum1_name_by_key(:entry3).should == "エントリ参"
-    SelectableAttrMock2.enum1_options.should == [["エントリ壱",1], ["エントリ弐",2], ["エントリ参",3]]
-
     I18n.locale = 'ja'
     SelectableAttrMock2.enum1_name_by_key(:entry1).should == "エントリ壱"
     SelectableAttrMock2.enum1_name_by_key(:entry2).should == "エントリ弐"
